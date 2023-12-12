@@ -63,9 +63,7 @@ func query(city string) (weatherData, error) {
 	return d, nil
 }
 
-func serveUI(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "index.html")
-}
+
 
 func main() {
 	http.HandleFunc("/hello", hello)
@@ -80,8 +78,7 @@ func main() {
 		json.NewEncoder(w).Encode(data)
 	})
 
-	// Serve the UI on root path
-	http.HandleFunc("/", serveUI)
+	
 
 	http.ListenAndServe(":8080", nil)
 }
